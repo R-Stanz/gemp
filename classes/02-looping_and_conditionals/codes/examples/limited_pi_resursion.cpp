@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cmath>
 
 using namespace std;
 
@@ -17,7 +16,6 @@ void print_pi(long int numerator, long int denominator, int count) {
 	long int int_division = numerator / denominator;
 	cout << int_division;
 
-	long int power = log10(denominator) + 1;
 	long int shift = 10;
 	long int next_numerator = (numerator - int_division * denominator) * shift;
 
