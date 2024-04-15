@@ -4,7 +4,7 @@ the total number of querries that will be received, respectively.
 
 Next the program is going to receive an array at each line, with
 the line begining with the number of elements of the array before
-having it's values.
+having the values.
 
 Each querry consists of a pair of values that represent the
 index of a previously declared array and an index of a value
