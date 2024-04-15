@@ -1,0 +1,28 @@
+The program must receive a pair of values that represents the
+total number of arrays that will be received by the program and
+the total number of querries that will be received, respectively.
+
+Next the program is going to receive an array at each line, with
+the line begining with the number of elements of the array than
+preceeded by that values of the array.
+
+Each querry consists of a pair of values that represent the
+index of a previously declared array and an index of a value
+in it - that the program must print it.
+
+Original problem => https://www.hackerrank.com/challenges/variable-sized-arrays/problem
+
+Ex:
+
+Sample Input =>
+
+2 2
+3 1 5 4
+5 1 2 8 9 3
+0 1
+1 3
+
+Sample Output =>
+
+5
+9
