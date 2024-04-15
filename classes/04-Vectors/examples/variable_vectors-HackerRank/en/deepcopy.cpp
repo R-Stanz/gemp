@@ -25,9 +25,8 @@ int main() {
             cin >> new_value;
             
             new_vector.push_back(new_value);
-            
-            vector_of_vectors.at(i) = new_vector;
         }
+	vector_of_vectors.at(i) = new_vector;
     }
     
     for (int i = 0; i < number_of_querries; i++) {
