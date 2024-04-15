@@ -3,8 +3,8 @@ total number of arrays that will be received by the program and
 the total number of querries that will be received, respectively.
 
 Next the program is going to receive an array at each line, with
-the line begining with the number of elements of the array than
-preceeded by that values of the array.
+the line begining with the number of elements of the array before
+having it's values.
 
 Each querry consists of a pair of values that represent the
 index of a previously declared array and an index of a value
