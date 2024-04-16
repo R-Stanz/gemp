@@ -1,0 +1,28 @@
+O programa deve receber um par de valores que representam o
+numero total de vetores que serao recebidos pelo programa e
+o numero total de requisicoes que serao recebidas, respectivamente.
+
+Em seguida o programa ira receber um vetor a cada linha, com
+a linha comecando com o numero de elementos de cada vetor e
+em seguida os valores. 
+
+Cada requisicao consiste de um par de valores que representam o
+index de um vetor previamente declarado e um index de um valor
+nele - que o programa deve exibir.
+
+Problema Original => https://www.hackerrank.com/challenges/variable-sized-arrays/problem
+
+Ex:
+
+Amostra de Entrada =>
+
+2 2
+3 1 5 4
+5 1 2 8 9 3
+0 1
+1 3
+
+Amostra de Saida =>
+
+5
+9
