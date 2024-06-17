@@ -3,7 +3,7 @@ public:
 	int partion(vector<int>& nums, int head, int tail) {
 		int pivot = tail;
 
-		for (int i = tail; i >= head; i--) {
+		for (int i = tail - 1; i >= head; i--) {
 			if (nums.at(i) >= nums.at(pivot)) {
 				int tmp = nums.at(i);
 
