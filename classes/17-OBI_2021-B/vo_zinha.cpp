@@ -7,26 +7,25 @@ using namespace std;
 
 void pegar_possibilidades(vector<vector<char>>& possibilidades);
 void ordenar_possibilidades(vector<vector<char>>& possibilidades);
-void decifrar_senha(vector<vector<char>>& possibilidades, int poss_desejada, string& senha);
+string decifrar_senha(vector<vector<char>>& possibilidades, int poss_desejada, string& senha_cript);
+void adicionar_chrs_limpos(string& senha, string& senha_cript);
 
 int main() {
 
 	int tam_senha, num_chrs_desc, num_de_pos;
 	cin >> tam_senha >> num_chrs_desc >> num_de_pos;
 
-	string senha;
-	cin >> senha;
+	string senha_cript;
+	cin >> senha_cript;
 
 	vector<vector<char>> possibilidades(num_chrs_desc);
 	pegar_possibilidades(possibilidades);
-
 	ordenar_possibilidades(possibilidades);
 
 	int poss_desejada;
 	cin >> poss_desejada;
 
-	decifrar_senha(possibilidades, poss_desejada, senha);
-	cout << senha << endl;
+	cout << decifrar_senha(possibilidades, poss_desejada, senha_cript) << endl;
 
 	return 0;
 }
@@ -47,33 +46,33 @@ void ordenar_possibilidades(vector<vector<char>>& possibilidades) {
 	}
 }
 
-void decifrar_senha(vector<vector<char>>& possibilidades, int poss_desejada, string& senha) {
+string decifrar_senha(vector<vector<char>>& possibilidades, int poss_desejada, string& senha_cript) {
 	int poss_garantida = 1;
-
 	int marcador_senha = 0;
 
-	int marcador_linha = 0;
-	int marcador_chr = 0;
-
 	int num_de_poss_por_linha = possibilidades.at(0).size();
-	while ((poss_garantida <= poss_desejada) and (marcador_linha < possibilidades.size())) {
+	string senha = "";
+	for (int nivel_de_poss = 0; nivel_de_poss < possibilidades.size(); nivel_de_poss++) {
 
-		int num_linhas_abaixo = possibilidades.size() - (marcador_linha + 1);
-		int incremento = pow(num_de_poss_por_linha, num_linhas_abaixo);
+		adicionar_chrs_limpos(senha, senha_cript);
 
-		if (poss_garantida + incremento <= poss_desejada) {	
-			marcador_chr += 1;
-			poss_garantida += incremento;
-		}
-		else {
-			while (senha.at(marcador_senha) != '#') {
-				marcador_senha += 1;
-			}
-			senha.at(marcador_senha) = possibilidades.at(marcador_linha).at(marcador_chr);
-			marcador_senha += 1;
+		int niveis_abaixo = (possibilidades.size() - 1) - nivel_de_poss;
+		int incremento_por_poss_no_nivel = pow(num_de_poss_por_linha, niveis_abaixo);
 
-			marcador_chr = 0;
-			marcador_linha += 1;
-		}
+		int poss_no_nivel = (poss_desejada - poss_garantida) / incremento_por_poss_no_nivel;
+		poss_garantida += poss_no_nivel * incremento_por_poss_no_nivel;
+
+		vector<char>& nivel =  possibilidades.at(nivel_de_poss);
+		senha += nivel.at(poss_no_nivel);
+	}
+
+	adicionar_chrs_limpos(senha, senha_cript);
+
+	return senha;
+}
+
+void adicionar_chrs_limpos(string& senha, string& senha_cript) {
+	while ((senha.size() < senha_cript.size()) and (senha_cript[senha.size()] != '#')) {
+		senha += senha_cript.at(senha.size());
 	}
 }
